@@ -5,8 +5,8 @@
 
 /*=====[Avoid multiple inclusion - begin]====================================*/
 
-#ifndef __EJERCICIO2_H__
-#define __EJERCICIO2_H__
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
 /*=====[Inclusions of public function dependencies]==========================*/
 
@@ -28,6 +28,11 @@ extern "C" {
 
 /*=====[Prototypes (declarations) of public functions]=======================*/
 
+/* Funcion atenderError
+ * Funcion para atender errores no implementada
+ * Se dejo un while(1) para que se quede en esta función en caso de error*/
+void atenderError();
+
 /*=====[Prototypes (declarations) of public interrupt functions]=============*/
 
 /*=====[C++ - end]===========================================================*/
@@ -38,4 +43,4 @@ extern "C" {
 
 /*=====[Avoid multiple inclusion - end]======================================*/
 
-#endif /* __EJERCICIO2_H__ */
+#endif /* __MAIN_H__ */

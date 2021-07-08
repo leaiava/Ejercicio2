@@ -5,36 +5,47 @@
 
 /*=====[Inclusions of function dependencies]=================================*/
 
-#include "../inc/main.h"
-
+#include "main.h"
 #include "sapi.h"
 #include "secuencias.h"
 
-/*=====[Definition macros of private constants]==============================*/
-
-/*=====[Definitions of extern global variables]==============================*/
-
-/*=====[Definitions of public global variables]==============================*/
-
-/*=====[Definitions of private global variables]=============================*/
-
-/*=====[Main function, program entry point after power on or reset]==========*/
-
 int main( void )
 {
-   // ----- Setup -----------------------------------
-	gpioMap_t secuencia1[] = {LED1, LED_OFF, LED2, LED3};
-	uint16_t tiempoSecuencia1[] = {1000, 500, 2000, 3000};
+	controlSecuencia secuencia1;
+	const gpioMap_t secuenciaLeds1[] = {LEDB, LED1, LED2, LED3 };
+	const uint16_t tiempoSecuencia1[] = {100, 500, 1000, 3000};
+
+
+	// Inicializo mi estructura1
+	secuencia1.ptrLed = secuenciaLeds1;
+	secuencia1.ledEncendido = (sizeof(secuenciaLeds1)/sizeof(gpioMap_t))-1;
+	secuencia1.ultimoLed = (sizeof(secuenciaLeds1)/sizeof(gpioMap_t))-1;
+	secuencia1.sentidoSecuencia = false;
+	// ----- Setup -----------------------------------
 	boardInit();
 
-   // ----- Repeat for ever -------------------------
-   while( true ) {
-      gpioToggle(LED);
-      delay(500);
+	//TEC1 -> sentidoSecuencia =0 de Izq a Der
+	//TEC4 -> sentidoSecuencia =1 de Der a Izq
+	//TEC2 ->
+	//TEC3 ->
+
+	// ----- Repeat for ever -------------------------
+	while( true ) {
+
+		seteo_sentidoSecuencia( &secuencia1 );
+
+		if( !activarSecuencia( &secuencia1 , tiempoSecuencia1 ) )
+			atenderError();
    }
 
    // YOU NEVER REACH HERE, because this program runs directly or on a
    // microcontroller and is not called by any Operating System, as in the 
    // case of a PC program.
    return 0;
+}
+
+// No se implementa la atención del error, se deja colgado con el while(1)
+void atenderError()
+{
+	while(1);
 }
