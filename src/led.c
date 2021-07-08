@@ -17,8 +17,10 @@ bool_t encenderLed( controlSecuencia* ptrSecuencia )
 }
 */
 bool_t encenderLed(gpioMap_t LedAEncender){
+	if( (LedAEncender<LEDR)||(LedAEncender>LED3))	//verifico que sea un Led válido
+		return(false);
 	gpioWrite( LedAEncender, ON );
-	return( true );
+	return( gpioRead(LedAEncender) );
 }
 
 /*
