@@ -24,6 +24,7 @@ extern "C" {
 /*=====[Public function-like macros]=========================================*/
 
 /*=====[Definitions of public data types]====================================*/
+#define LED_OFF	LED3+1
 
 /*=====[Prototypes (declarations) of public functions]=======================*/
 

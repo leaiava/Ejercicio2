@@ -5,8 +5,10 @@
 
 /*=====[Inclusions of function dependencies]=================================*/
 
-#include "Ejercicio2.h"
+#include "../inc/main.h"
+
 #include "sapi.h"
+#include "secuencias.h"
 
 /*=====[Definition macros of private constants]==============================*/
 
@@ -21,7 +23,9 @@
 int main( void )
 {
    // ----- Setup -----------------------------------
-   boardInit();
+	gpioMap_t secuencia1[] = {LED1, LED_OFF, LED2, LED3};
+	uint16_t tiempoSecuencia1[] = {1000, 500, 2000, 3000};
+	boardInit();
 
    // ----- Repeat for ever -------------------------
    while( true ) {
