@@ -14,7 +14,7 @@ _Este firmware tiene dos integrantes:_
 En main.c con 
  
     #define ejercicio1
-Se comila para que ejecute la secuencia de leds de la práctica 1. Sin el define ejecuta la secuencia de leds del semáforo de la práctica 2
+Se compila para que ejecute la secuencia de leds de la práctica 1. Sin el define ejecuta la secuencia de leds del semáforo de la práctica 2
 
 ## PdM - Práctica 2
 
