@@ -1,54 +1,43 @@
-/*
- * led.c
- *
- *  Created on: Jul 7, 2021
- *      Author: lea
- */
+/*=============================================================================
+ * Author: Leandro Arrieta <leandroarrieta@gmail.com>
+ * 		   Jonathan Cagua <jonathan.cagua@gmail.com >
+ * Date: 2021/07/07
+ *===========================================================================*/
+
 
 #include "sapi.h"
 #include "led.h"
 
-/*encenderLed ahora recibe el led a encender para bajar la visibilidad y no mandar toda la estructura
-bool_t encenderLed( controlSecuencia* ptrSecuencia )
-{
-	if (ptrSecuencia == NULL)
-		return (false);
-	return gpioWrite( ptrSecuencia->ptrLed[ptrSecuencia->ledEncendido], ON );
-}
-*/
-bool_t encenderLed(gpioMap_t LedAEncender){
-	if( (LedAEncender<LEDR)||(LedAEncender>LED3))	//verifico que sea un Led válido
+/* Funcion ledEncender
+ * Sirve para encender un led en particular
+ * Recibe el Led a encender
+ * Devuelve 1 si pudo encender el led o si el led que se recibió es el LED_OFF
+ * Devuelve 0 en caso de error */
+bool_t ledEncender(gpioMap_t LedaEncender){
+	if( (LedaEncender == LED_OFF))	//Si en el array viene el LED_OFF no intento prender y devuelve true
+		return (true);
+
+	if( (LedaEncender<LEDR)||(LedaEncender>LED3))	//verifico que sea un Led válido
 		return(false);
-	gpioWrite( LedAEncender, ON );
-	return( gpioRead(LedAEncender) );
+	gpioWrite( LedaEncender, ON );              //prendo el led
+	return( !led_esta_apagado(LedaEncender) );	//verifico que se haya prendido
 }
 
-/*
- * apagarLeds ahora recibe el array de leds a encender para bajar la visibilidad y no mandar toda la estructura
-//bool_t apagarLeds(controlSecuencia* ptrSecuencia )
-{
-	if(ptrSecuencia == NULL)
-		return(false);
-	bool_t resp = true;
-	for(int i = 0 ;i <= ptrSecuencia->ultimoLed; i++){
-		resp &= led_apagar( ptrSecuencia->ptrLed[ i ] );	//apago led
-		resp &= led_esta_apagado( ptrSecuencia->ptrLed[ i ] );	//verifico que se haya apagado
-	}
-	return(resp);
-}
-*/
-bool_t apagarLeds(const gpioMap_t* ptrArrayLed ){
-	if (ptrArrayLed == NULL)
-			return (false);
+/* Funcion ledApagar
+ * Sirve para apagar un led
+ * Recibe led a apagar
+ * Devuelve 1 si pudo apagar el led
+ * Devuelve 0 en caso de error */
+bool_t ledApagar(gpioMap_t LedaApagar ){
 
-	uint8_t ultimoLed = (sizeof(ptrArrayLed)/sizeof(gpioMap_t))-1;
+	if( (LedaApagar == LED_OFF))	//Si recibo el LED_OFF no intento apagar y devuelve true
+			return (true);
 
 	bool_t resp = true;
-	for(int i = 0 ;i <= ultimoLed; i++){
-		resp &= led_apagar( ptrArrayLed[ i ] );	//apago led
-		resp &= led_esta_apagado( ptrArrayLed[ i ] );	//verifico que se haya apagado
-	}
+
+	if( (LedaApagar<LEDR)||(LedaApagar>LED3))	//verifico que sea un Led válido
+		return(false);
+	resp &= led_apagar( LedaApagar );	//apago led
+	resp &= led_esta_apagado( LedaApagar );	//verifico que se haya apagado
 	return(resp);
 }
-
-

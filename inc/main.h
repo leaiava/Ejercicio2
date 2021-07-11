@@ -20,6 +20,8 @@ extern "C" {
 #endif
 
 /*=====[Definition macros of public constants]===============================*/
+#define TiempoSize(timex) (sizeof(timex)/sizeof(uint16_t))-1
+#define SecuenciaSize(secuenciax) (sizeof(secuenciax)/sizeof(gpioMap_t))-1
 
 /*=====[Public function-like macros]=========================================*/
 
@@ -27,10 +29,6 @@ extern "C" {
 #define LED_OFF	LED3+1
 
 /*=====[Prototypes (declarations) of public functions]=======================*/
-
-/* Funcion atenderError
- * Funcion para atender errores no implementada
- * Se dejo un while(1) para que se quede en esta función en caso de error*/
 void atenderError();
 
 /*=====[Prototypes (declarations) of public interrupt functions]=============*/

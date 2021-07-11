@@ -1,33 +1,22 @@
-/*
- * led.h
- *
- *  Created on: Jul 7, 2021
- *      Author: lea
- */
+/*=============================================================================
+ * Author: Leandro Arrieta <leandroarrieta@gmail.com>
+ * 		   Jonathan Cagua <jonathan.cagua@gmail.com >
+ * Date: 2021/07/07
+ *===========================================================================*/
+
 
 #ifndef _LED_H_
 #define _LED_H_
 
 #define led_apagar(ledx)	gpioWrite( ledx, OFF )
 #define led_esta_apagado(teclax)	!gpioRead( teclax )
+#define LED_OFF LED3+1	//defino el LED_OFF con uno más del último led de la placa
 
 /*=====[Prototypes (declarations) of public functions]=======================*/
 
-/* Funcion encenderLed
- * Sirve para encender un led en particular
- * Recibe un puntero a la estructura controlSecuencia
- * Devuelve 1 si pudo encender el led
- * Devuelve 0 en caso de error */
-//bool_t encenderLed( controlSecuencia* ptrSecuencia );
-bool_t encenderLed(gpioMap_t LedAEncender);
+bool_t ledEncender(gpioMap_t LedaEncender);
 
-/* Funcion apagarLeds
- * Sirve para apagar todos los leds juntos
- * Recibe un puntero a la estructura controlSecuencia
- * Devuelve 1 si pudo apagar todos los leds
- * Devuelve 0 en caso de error */
-//bool_t apagarLeds(controlSecuencia* ptrSecuencia );
-bool_t apagarLeds(const gpioMap_t* ptrArrayLed );
+bool_t ledApagar(gpioMap_t LedaApagar );
 
-#endif /* EJERCICIOSLEA_EJERCICIO2_INC_LED_H_ */
+#endif /*_LED_H_ */
 

@@ -1,31 +1,18 @@
-/*
- * tecla.c
- *
- *  Created on: Jul 7, 2021
- *      Author: lea
- */
+/*=============================================================================
+ * Author: Leandro Arrieta <leandroarrieta@gmail.com>
+ * 		   Jonathan Cagua <jonathan.cagua@gmail.com >
+ * Date: 2021/07/07
+ *===========================================================================*/
+
 #include "sapi.h"
 #include "tecla.h"
 
+/* Funcion leerTecla
+ * Sirve para leer el estado de una tecla.
+ * Recibe tecla a leer
+ * Devuelve por valor el estado de la tecla pulsada (verdadero) o liberada (falso)*/
 bool_t leerTecla (gpioMap_t teclax){
-	//verifico que sea una tecla válida
-	if ( !( (teclax== TEC1) || (teclax== TEC2) || (teclax== TEC3) || (teclax== TEC4) ) )
+	if ( !( (teclax== TEC1) || (teclax== TEC2) || (teclax== TEC3) || (teclax== TEC4) ) ) //verifico que sea una tecla válida
 			return 0;
 	return !gpioRead( teclax );
 }
-
-/*
- * Esta función ya no se usa ya que el tiempo que destella cada led se fija en un array
-bool_t seteo_delay(delay_t* ptrDelay){
-
-	if ( leerTecla( TEC2 ) ){
-		delayWrite( ptrDelay, 150 );
-	}
-	if ( leerTecla( TEC3 ) ){
-		delayWrite( ptrDelay, 750 );
-	}
-	return (delayRead(ptrDelay));
-}
-*/
-
-
