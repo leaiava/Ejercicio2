@@ -8,6 +8,10 @@
 #ifndef _SECUENCIAS_H_
 #define _SECUENCIAS_H_
 
+#include "sapi.h"
+#include "led.h"
+#include "tecla.h"
+
 typedef struct{
 	const gpioMap_t* ptrLed;//puntero al arreglo de leds
 	uint8_t ledEncendido;//el led encendido en la secuencia

@@ -4,10 +4,7 @@
  * Date: 2021/07/07
  *===========================================================================*/
 
-#include "sapi.h"
 #include "secuencias.h"
-#include "led.h"
-#include "tecla.h"
 
 /* Funcion SecuenciaSentidoChequear
  * Sirve para seterar el sentido de la secuencia de leds.

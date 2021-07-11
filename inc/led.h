@@ -8,6 +8,8 @@
 #ifndef _LED_H_
 #define _LED_H_
 
+#include "sapi.h"
+
 #define led_apagar(ledx)	gpioWrite( ledx, OFF )
 #define led_esta_apagado(teclax)	!gpioRead( teclax )
 #define LED_OFF LED3+1	//defino el LED_OFF con uno más del último led de la placa

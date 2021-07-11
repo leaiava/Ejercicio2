@@ -8,7 +8,7 @@
 #ifndef _TECLA_H_
 #define _TECLA_H_
 
-/*=====[Prototypes (declarations) of public functions]=======================*/
+#include "sapi.h"
 
 bool_t leerTecla (gpioMap_t tecla);
 

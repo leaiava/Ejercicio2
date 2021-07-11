@@ -7,8 +7,6 @@
 /*=====[Inclusions of function dependencies]=================================*/
 
 #include "main.h"
-#include "sapi.h"
-#include "secuencias.h"
 
 #define SecuenciaCantidad 3
 
